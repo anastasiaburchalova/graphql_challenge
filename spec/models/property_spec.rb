@@ -16,5 +16,6 @@ describe Property do
     it { is_expected.to validate_presence_of :street_address }
     it { is_expected.to validate_length_of(:street_address).is_at_most(255) }
     it { is_expected.to validate_numericality_of(:bedrooms).only_integer.is_greater_than_or_equal_to(0) }
+    it { is_expected.to validate_numericality_of(:size).is_greater_than_or_equal_to(0) }
   end
 end

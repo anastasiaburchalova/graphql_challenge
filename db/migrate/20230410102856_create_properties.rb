@@ -7,7 +7,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :city, null: false
       t.string :street_address, null: false
       t.integer :bedrooms, null: false, default: 0
-      t.decimal :size
+      t.decimal :size, precision: 10, scale: 2
 
       t.index :city
       t.timestamps
