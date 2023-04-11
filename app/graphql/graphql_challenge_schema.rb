@@ -2,7 +2,7 @@
 
 class GraphqlChallengeSchema < GraphQL::Schema
   MAX_COMPLEXITY = 1000
-  MAX_DEPTH = 10
+  MAX_DEPTH = 15
   MAX_ERRORS = 100
 
   mutation(Types::MutationType)

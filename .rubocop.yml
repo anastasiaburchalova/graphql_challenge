@@ -19,3 +19,6 @@ Metrics/MethodLength:
 
 GraphQL/ExtractType:
   Enabled: false
+
+GraphQL/ObjectDescription:
+  Enabled: false

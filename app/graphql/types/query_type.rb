@@ -22,7 +22,27 @@ module Types
           null: false,
           description: 'Return all furnishings'
 
-    # TODO: add pagination
+    field :property,
+          Types::PropertyType,
+          null: true,
+          description: 'Find a property' do
+      argument :params, Types::PropertyParamsType, 'Search params', required: true
+    end
+
+    field :valuation,
+          Types::ValuationType,
+          null: true,
+          description: 'Find a valuation' do
+      argument :params, Types::ValuationParamsType, 'Search params', required: true
+    end
+
+    field :furnishing,
+          Types::FurnishingType,
+          null: true,
+          description: 'Find a furnishing' do
+      argument :params, Types::FurnishingParamsType, 'Search params', required: true
+    end
+
     def properties
       Property.all
     end
@@ -33,6 +53,18 @@ module Types
 
     def furnishings
       Furnishing.all
+    end
+
+    def property(params:)
+      Services::SingleRecordResolver.new(params: params, entity_klass: Property).call
+    end
+
+    def valuation(params:)
+      Services::SingleRecordResolver.new(params: params, entity_klass: Valuation).call
+    end
+
+    def furnishing(params:)
+      Services::SingleRecordResolver.new(params: params, entity_klass: Furnishing).call
     end
   end
 end
