@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "20012ca6-6f22-4394-b073-c81108bdf167",
+		"name": "graphql challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12894345"
+	},
+	"item": [
+		{
+			"name": "Mutation",
+			"item": [
+				{
+					"name": "createFurnishing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($params: CreateFurnishingParams!) { \n\tcreateFurnishing (params: $params) {\n\t\tcondition\n\t\thasDishwasher\n\t\thasWashingMashine\n\t\tproperty {\n            id\n        }\n\t} \n}",
+								"variables": "{\n    \"params\": {\n        \"propertyId\": 2\n    }\n\n}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createProperty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($params: CreatePropertyParams!) { \n\tcreateProperty (params: $params) {\n\t\tbedrooms\n\t\tcity\n\t\tid\n\t\towner\n\t\tsize\n\t\tstreetAddress\n\t} \n}",
+								"variables": "{\n    \"params\": {\n        \"city\": \"Munich\",\n        \"owner\": \"Alex\",\n        \"bedrooms\": 1,\n        \"streetAddress\": \"Street 1\"\n    }\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createValuation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($params: CreateValuationParams!) { \n\tcreateValuation (params: $params) {\n\t\tid\n\t\tpriceMin\n\t\tproperty { id }\n\t\tsellAfter\n\t\tsellBefore\n\t} \n}",
+								"variables": "{\n    \"params\": {\n        \"propertyId\": 2\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFurnishing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($id: Int!) { \n\tdeleteFurnishing (id: $id) {\n\t\tcondition\n\t\thasDishwasher\n\t\thasWashingMashine\n\t\tid\n\t} \n}",
+								"variables": "{\"id\": 1 }"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProperty",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($id: Int!) { \n\tdeleteProperty (id: $id) {\n\t\tbedrooms\n\t\tcity\n\t\tid\n\t\towner\n\t\tsize\n\t\tstreetAddress\n\t} \n}",
+								"variables": "{\"id\": 1}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteValuation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($id: Int!) { \n\tdeleteValuation (id: $id) {\n\t\tid\n\t\tpriceMin\n\t\tsellAfter\n\t\tsellBefore\n\t} \n}",
+								"variables": "{\"id\": 1}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "furnishing",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($params: FurnishingParams!) { \n\tfurnishing (params: $params) {\n\t\tcondition\n\t\thasDishwasher\n\t\thasWashingMashine\n\t\tid\n\t\tproperty {\n            id\n            owner\n        }\n\t} \n}",
+								"variables": "{\"params\": {\"id\": 5}}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "furnishings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query  { \n\tfurnishings  {\n        id\n        condition\n        hasDishwasher\n        hasWashingMashine\n\t} \n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "properties",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query  { \n\tproperties  {\n        bedrooms\n        city\n        id\n        owner\n        size\n        valuation { \n            id\n            priceMin \n            sellAfter\n            sellBefore\n        }\n        furnishing {\n            id\n            condition\n            hasDishwasher\n            hasWashingMashine\n        }\n\t} \n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($params: PropertyParams!) { \n\tproperty (params: $params) {\n\t\tbedrooms\n\t\tcity\n\t\tfurnishing { id }\n\t\tid\n\t\towner\n\t\tsize\n\t\tstreetAddress\n\t\tvaluation { id }\n\t} \n}",
+								"variables": "{\n    \"params\": {\n        \"id\": 2\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "valuation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($params: ValuationParams!) { \n\tvaluation (params: $params) {\n\t\tid\n\t\tpriceMin\n\t\tproperty { id }\n\t\tsellAfter\n\t\tsellBefore\n\t} \n}",
+								"variables": "{\"params\": { \"id\": 5 }}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "valuations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query  { \n\tvaluations  {\n      \tid\n\t\tpriceMin\n\t\tproperty { \n            id \n            bedrooms\n        }\n\t\tsellAfter\n\t\tsellBefore  \n\t} \n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}",
+							"host": [
+								"{{base_url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:3000/graphql"
+		}
+	]
+}

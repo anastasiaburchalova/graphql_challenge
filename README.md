@@ -1,24 +1,53 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Installation instructions:
 
 * Ruby version
 
+3.0.0
+
 * System dependencies
 
-* Configuration
+	- RVM or other ruby version manager of your choice
+	- Rubygems
+	- Native MySQL
 
-* Database creation
+* Installation instructions
 
-* Database initialization
+In the project directory, install ruby version if not installed, e.g.
 
-* How to run the test suite
+	rvm install 3.0.0
 
-* Services (job queues, cache servers, search engines, etc.)
+Install bundler
+	
+	gem install bundler
 
-* Deployment instructions
+Install required gems
 
-* ...
+	bundle
+
+Create your `database.yml` file
+	
+	cp database.yml.example database.yml
+
+Update `database.yml` to match your local mysql settings
+
+Create and initialize database
+
+	rake db:create
+	rake db:migrate
+	rake db:seed
+
+*Optional* Run the test suite to ensure that the project is set up correctly
+
+	rspec
+
+*Optional* Run the static code analyzer
+
+	rubocop
+
+Run the server
+
+	rails s
+
+Open `http://127.0.0.1:3000/graphiql` for a GraphQL visual explorer or use Postman with attached collection (`graphql_challenge.postman_collection.json`)
