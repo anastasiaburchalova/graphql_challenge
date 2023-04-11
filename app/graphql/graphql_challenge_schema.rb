@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
 class GraphqlChallengeSchema < GraphQL::Schema
+  MAX_COMPLEXITY = 1000
+  MAX_DEPTH = 10
+  MAX_ERRORS = 100
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader
+  query_analyzer(Services::LogQueryDepthAnalyzer)
+  query_analyzer(Services::LogQueryComplexityAnalyzer)
 
-  max_complexity 1000 ### TODO define complexity and depth
-  max_depth 100
+  max_complexity MAX_COMPLEXITY
+  max_depth MAX_DEPTH
 
   # GraphQL-Ruby calls this when something goes wrong while running a query:
 
@@ -20,7 +26,7 @@ class GraphqlChallengeSchema < GraphQL::Schema
   end
 
   # Stop validating when it encounters this many errors:
-  validate_max_errors(100)
+  validate_max_errors(MAX_ERRORS)
 
   # Relay-style Object Identification:
 

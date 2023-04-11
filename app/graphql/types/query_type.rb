@@ -2,7 +2,6 @@
 
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
@@ -13,8 +12,27 @@ module Types
           null: false,
           description: 'Return all properties'
 
+    field :valuations,
+          [Types::ValuationType],
+          null: false,
+          description: 'Return all valuations'
+
+    field :furnishings,
+          [Types::FurnishingType],
+          null: false,
+          description: 'Return all furnishings'
+
+    # TODO: add pagination
     def properties
       Property.all
+    end
+
+    def valuations
+      Valuation.all
+    end
+
+    def furnishings
+      Furnishing.all
     end
   end
 end
