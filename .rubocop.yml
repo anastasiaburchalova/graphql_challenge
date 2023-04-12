@@ -22,3 +22,7 @@ GraphQL/ExtractType:
 
 GraphQL/ObjectDescription:
   Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/integration/queries/properties_query_spec.rb'
